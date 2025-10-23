@@ -1,0 +1,398 @@
+/* ========== Base ========== */
+:root {
+  --bg: #000;
+  --brand: #dcca87;
+  --brand-dark: #1c0808e2;
+  --text: #fff;
+  --muted: #61655c;
+  --gold: gold;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Cormorant Upright", serif;
+}
+
+/* ========== Nav ========== */
+nav {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: #ccae06;
+}
+nav ul {
+  margin-left: auto;
+  display: flex;
+  gap: 6rem;
+  list-style: none;
+}
+nav a {
+  color: var(--brand-dark);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 3rem;
+}
+#logo {
+  width: 10rem;
+}
+
+/* ========== Hero ========== */
+main {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  background-image: url(./images/BG.jpg);
+  background-size: cover;
+  background-position: center;
+}
+main h1 {
+  text-align: center;
+  font-weight: 900;
+  font-size: 5rem;
+  color: var(--brand);
+  text-shadow: rgba(0, 0, 0, 0.6) 0 2px 10px;
+}
+/* icons animation */
+.Hotdog-img,
+.Burger-img,
+.Coffemug-img {
+  position: absolute;
+  width: 15rem;
+}
+.Hotdog-img {
+  top: 150px;
+  left: 120px;
+}
+.Burger-img {
+  top: 170px;
+  right: 120px;
+}
+.Coffemug-img {
+  bottom: 110px;
+  left: 180px;
+}
+.Hotdog-img img,
+.Burger-img img,
+.Coffemug-img img {
+  width: 100%;
+  animation: wiggle 2s linear infinite alternate;
+  transform-origin: center;
+}
+.Burger-img img {
+  animation-delay: -2s;
+}
+.Coffemug-img img {
+  animation-delay: -1s;
+}
+@keyframes wiggle {
+  0% {
+    transform: translateX(5px) rotate(5deg);
+  }
+  100% {
+    transform: translateX(-5px) rotate(-5deg);
+  }
+}
+
+/* ========== Menu (public) ========== */
+.menu {
+  padding: 6rem 2rem;
+  background: linear-gradient(#000000ee, #17010094);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.menu fieldset {
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  padding: 3rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.menu legend h1 {
+  font-size: 4rem;
+  color: #fff;
+  text-align: center;
+}
+
+/* wrapper around #menu-list in your HTML */
+.menu-list {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* ensure bulletless, evenly spaced list */
+#menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1.4rem;
+  width: 100%;
+  max-width: 700px;
+}
+
+/* each item as a soft card with image + text grid */
+#menu-list .menu-item {
+  display: grid;
+  grid-template-columns: 160px 1fr; /* image | text */
+  gap: 1.2rem;
+  align-items: start;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid var(--gold);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* image styling */
+#menu-list .menu-img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid var(--gold);
+  display: block;
+}
+
+/* title + line + price row */
+#menu-list .meta .item {
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* name | line | price */
+  align-items: baseline;
+  column-gap: 0.8rem;
+}
+
+/* bigger title */
+#menu-list .meta .name {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--brand);
+  letter-spacing: 0.2px;
+}
+
+/* decorative line */
+#menu-list .meta .menu-line {
+  height: 1px;
+  align-self: center;
+}
+#menu-list .meta .menu-line .line {
+  width: 12rem;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.9;
+}
+
+/* bolder price */
+#menu-list .meta .price {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* description spacing */
+#menu-list .meta .description {
+  margin-top: 0.5rem;
+  font-size: 2.4rem;
+  line-height: 1.5;
+  color: #ddd;
+}
+
+/* subtle hover */
+#menu-list .menu-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.32);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* ========== Location ========== */
+#location {
+  padding: 6rem 0;
+  background: linear-gradient(#010101c1, #f5080022), url(./images/BG.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.location-container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 2rem;
+}
+.info-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.info-card {
+  background: linear-gradient(#fff, rgba(255, 255, 255, 0.75));
+  color: #222;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.info {
+  padding: 2rem 2rem 1rem;
+}
+.info h2 {
+  margin-bottom: 0.5rem;
+}
+.info p {
+  color: var(--muted);
+}
+#map-location {
+  width: calc(100% - 2rem);
+  margin: 0 1rem 1rem;
+  min-height: 320px;
+  border: 2px solid #000;
+  border-radius: 6px;
+}
+
+/* ========== Footer ========== */
+footer {
+  background: var(--brand-dark);
+}
+.footer-container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 2rem;
+}
+.footer-info {
+  color: var(--brand);
+  font-size: 2rem;
+  line-height: 3rem;
+}
+#footer-logo {
+  width: 18rem;
+}
+.fa {
+  padding: 1rem 2rem;
+  font-size: 2.4rem;
+  color: var(--brand);
+  border: 1px solid var(--brand);
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+.fa:hover {
+  background: var(--brand);
+  color: var(--brand-dark);
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 900px) {
+  html {
+    font-size: 58%;
+  }
+
+  .location-container {
+    grid-template-columns: 1fr;
+  }
+
+  .Hotdog-img {
+    left: 60px;
+    width: 12rem;
+  }
+  .Hotdog-img img {
+    width: 10rem;
+  }
+  .Burger-img {
+    right: 5px;
+    top: 200px;
+    width: 12rem;
+  }
+  .Burger-img img {
+    width: 10rem;
+  }
+  .Coffemug-img {
+    left: 30px;
+    bottom: 50px;
+    width: 12rem;
+  }
+  .Coffemug-img img {
+    width: 10rem;
+  }
+
+  .menu fieldset {
+    max-width: 720px;
+    padding: 2.2rem;
+  }
+
+  /* menu list width adjusts automatically via #menu-list max-width */
+  #menu-list .menu-item {
+    grid-template-columns: 140px 1fr;
+  }
+  #menu-list .menu-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 16px;
+  }
+
+  #menu-list .meta .name {
+    font-size: 2.4rem;
+  }
+  #menu-list .meta .menu-line .line {
+    width: 10rem;
+  }
+}
+
+@media (max-width: 520px) {
+  html {
+    font-size: 55%;
+  }
+  nav ul {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .menu {
+    padding: 4rem 1rem;
+  }
+  .menu fieldset {
+    max-width: 100%;
+    padding: 1.6rem;
+  }
+  .menu legend h1 {
+    font-size: 3.2rem;
+  }
+
+  /* stack image above text on narrow screens */
+  #menu-list {
+    max-width: 100%;
+  }
+  #menu-list .menu-item {
+    grid-template-columns: 1fr;
+  }
+  #menu-list .menu-img {
+    width: 100%;
+    max-width: 520px;
+    height: 220px;
+  }
+  #menu-list .meta .menu-line .line {
+    width: 8rem;
+  }
+}

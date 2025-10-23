@@ -1,0 +1,197 @@
+/* ===== Admin Layout ===== */
+.admin-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  gap: 3rem;
+  min-height: 100vh;
+  height: auto;
+}
+
+/* ===== Title ===== */
+.admin-wrap h1 {
+  font-size: 4.2rem;
+  color: var(--brand);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* ===== Card Containers ===== */
+.card {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border: 1px solid var(--gold);
+  border-radius: 16px;
+  padding: 2.4rem 2rem;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+}
+
+.card h2 {
+  font-size: 2.6rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== Forms ===== */
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  gap: 1rem;
+}
+
+.row input,
+.row textarea {
+  width: 100%;
+  padding: 1.2rem 1.4rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  background: #000;
+  color: #fff;
+  font-size: 1.8rem;
+  outline: none;
+}
+
+.row input:focus,
+.row textarea:focus {
+  box-shadow: 0 0 0 3px rgba(220, 202, 135, 0.25);
+  border-color: var(--gold);
+}
+
+/* ===== Buttons ===== */
+.row button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--gold);
+  background: var(--brand-dark);
+  color: var(--brand);
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.row button:hover { filter: brightness(1.1); }
+.row button:disabled { opacity: .6; cursor: not-allowed; }
+.row button + button { margin-top: 0.8rem; }
+
+.row .ghost {
+  background: transparent;
+  color: var(--brand);
+  border-color: rgba(255, 215, 0, 0.35);
+}
+
+/* ===== Helper Text ===== */
+.hint {
+  opacity: 0.8;
+  font-size: 1.6rem;
+  margin-top: 0.8rem;
+  text-align: center;
+}
+
+.status {
+  margin-top: 0.8rem;
+  font-size: 2rem;
+  color: #ccc;
+  text-align: center;
+}
+
+/* ===== Admin List ===== */
+.admin-list {
+  list-style: none;
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.admin-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  border-radius: 8px;
+  padding: 1.2rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.admin-list b {
+  color: var(--brand);
+  font-size: 2rem;
+}
+
+.admin-list .price {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.admin-list .right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.admin-list .right button {
+  flex: 1 1 auto;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--gold);
+  background: var(--brand-dark);
+  color: var(--brand);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.admin-list .right button:hover { filter: brightness(1.1); }
+
+/* ===== Thumbnails ===== */
+.thumb-line { margin-top: .6rem; }
+.thumb {
+  max-width: 120px;
+  max-height: 90px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 215, 0, .25);
+  display: block;
+}
+
+/* ===== Errors ===== */
+.field { display: flex; flex-direction: column; width: 100%; }
+
+.error {
+  color: #ffcbcb;
+  font-size: 2.2rem;
+  line-height: 1.9;
+  min-height: 1.6em;
+  padding: .2rem .2rem 0;
+}
+
+.form-error {
+  color: #ffdbdb;
+  font-size: 2rem;
+  margin-top: 0.8rem;
+  min-height: 1.4em;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 700px) {
+  .admin-wrap { padding: 1rem; gap: 2rem; }
+  .card { max-width: 95%; padding: 1.6rem; }
+  .admin-wrap h1 { font-size: 3.4rem; }
+  .card h2 { font-size: 2.2rem; }
+  .row button { font-size: 1.4rem; }
+}

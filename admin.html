@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <title>Admin – Norra Café</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./admin.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="./index.html">
+        <img id="logo" src="./images/Norra Cafe logo1.png" alt="Norra Café" />
+      </a>
+      <ul>
+        <li><a href="./index.html#menu">Meny</a></li>
+        <li><a href="./index.html#location">Var & När</a></li>
+        <li><a href="./index.html#footer">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="admin-wrap">
+    <h1>Adminpanel</h1>
+
+    <!-- Login -->
+    <section class="card">
+      <h2>Logga in</h2>
+      <form id="login-form" class="row">
+        <label class="field">
+          <input name="username" placeholder="Användarnamn" autocomplete="username" required />
+          <small class="error" data-error-for="username"></small>
+        </label>
+
+        <label class="field">
+          <input name="password" type="password" placeholder="Lösenord" autocomplete="current-password" required />
+          <small class="error" data-error-for="password"></small>
+        </label>
+
+        <div class="row buttons">
+          <button type="submit">Logga in</button>
+          <button type="button" id="logout-btn" class="ghost">Logga ut</button>
+        </div>
+
+        <div class="form-error" data-form-error></div>
+      </form>
+
+      <p class="hint">Token sparas i <code>sessionStorage</code> tills fliken stängs.</p>
+      <p class="status" id="auth-status">Inte inloggad.</p>
+    </section>
+
+    <!-- Create new item -->
+    <section id="crud" class="card" style="display:none;">
+      <h2>Ny menyartikel</h2>
+      <form id="create-form" class="row" enctype="multipart/form-data">
+        <label class="field">
+          <input type="file" name="image" accept="image/*" required />
+          <small class="error" data-error-for="image"></small>
+        </label>
+
+        <label class="field">
+          <input name="imageAlt" placeholder="Bildens alt-text" required />
+          <small class="error" data-error-for="imageAlt"></small>
+        </label>
+
+        <label class="field">
+          <input name="title" placeholder="Titel" required />
+          <small class="error" data-error-for="title"></small>
+        </label>
+
+        <label class="field">
+          <input name="price" type="number" placeholder="Pris (kr)" required />
+          <small class="error" data-error-for="price"></small>
+        </label>
+
+        <label class="field">
+          <input name="category" placeholder="Kategori (t.ex. Mat, Dryck)" required />
+          <small class="error" data-error-for="category"></small>
+        </label>
+
+        <label class="field">
+          <textarea name="description" placeholder="Beskrivning" rows="3" required></textarea>
+          <small class="error" data-error-for="description"></small>
+        </label>
+
+        <button type="submit">Spara</button>
+        <div class="form-error" data-form-error></div>
+        <p class="message" id="menuMsg"></p>
+      </form>
+    </section>
+
+    <!-- List -->
+    <section id="list-card" class="card" style="display:none;">
+      <h2>Menylista</h2>
+      <ul id="admin-list" class="admin-list"></ul>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <div class="footer-container">
+      <div>
+        <img id="footer-logo" src="./images/Norra Cafe logo1.png" alt="Norra Café" />
+      </div>
+      <div class="footer-info">
+        <h3>Norra Café</h3>
+        <p>Stationsgatan 14<br />87230 Kramfors</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./admin.js" defer></script>
+</body>
+</html>
