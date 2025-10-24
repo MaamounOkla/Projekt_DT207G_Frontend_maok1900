@@ -1,29 +1,30 @@
-  
-// REST endpoint that returns the menu array
+// API endpoint for public menu items
 const API_URL = 'http://127.0.0.1:3000/api/menu';
 
-// Base URL where static uploads are served (server exposes app.use('/uploads', ...))
+// Base URL for uploaded images served by the backend
 const ASSETS_URL = 'http://127.0.0.1:3000';
 
-// Wait until the DOM is ready, then load the menu
+// Initialize rendering when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  const listEl = document.getElementById('menu-list');
-  if (!listEl) {
-    console.error('No element with id="menu-list" found on this page.');
+  const groupsEl = document.getElementById('menu-groups');
+  if (!groupsEl) {
+    console.error('Missing #menu-groups container.');
     return;
   }
-  loadMenu(listEl);
+  loadMenu(groupsEl);
 });
 
-// a function to safely escape text for HTML injection
+// Escape potentially unsafe text for HTML rendering
 function escapeHtml(s = '') {
   return String(s)
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
 
-// Returns one <li> row for a menu item
+// Build a single <li> menu item
 function itemRow(item) {
   const title = escapeHtml(item.title || '');
   const desc = escapeHtml(item.description || '');
@@ -47,29 +48,77 @@ function itemRow(item) {
   `;
 }
 
-// Fetches the menu from the API and renders it
-async function loadMenu(listEl) {
-  console.log('[menu] fetching…');
+// Build a category section with heading and item list
+function renderCategorySection(label, items) {
+  const safeLabel = escapeHtml(label);
+  const listHtml = items.map(itemRow).join('');
+  return `
+    <section class="menu-group" data-category="${safeLabel.toLowerCase()}">
+      <h3 class="menu-group-title">${safeLabel}</h3>
+      <ul class="menu-group-list">
+        ${listHtml}
+      </ul>
+    </section>
+  `;
+}
+
+// Fetch menu data, group by category, order groups, and render
+async function loadMenu(containerEl) {
   try {
     const res = await fetch(API_URL);
-    console.log('[menu] HTTP status:', res.status);
-    if (!res.ok) throw new Error('HTTP ' + res.status);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     const items = await res.json();
-    console.log('[menu] items:', items);
 
-    listEl.innerHTML =
-      Array.isArray(items) && items.length
-        ? items.map(itemRow).join('')
-        : '<li><div class="description">Inget i menyn än.</div></li>';
+    if (!Array.isArray(items) || items.length === 0) {
+      containerEl.innerHTML = `
+        <section class="menu-group">
+          <ul class="menu-group-list">
+            <li><div class="description">Inget i menyn än.</div></li>
+          </ul>
+        </section>`;
+      return;
+    }
 
-    // Clear any previous error message
+    // Group items by category (case-insensitive), default to "Övrigt"
+    const groupsMap = new Map();
+    for (const it of items) {
+      const label = (it.category || 'Övrigt').trim();
+      const key = label.toLowerCase();
+      if (!groupsMap.has(key)) groupsMap.set(key, { label, items: [] });
+      groupsMap.get(key).items.push(it);
+    }
+
+    // Order preferred categories first, then alphabetical
+    const preferredOrder = ['Mat', 'Dryck', 'Dessert'].map(s => s.toLowerCase());
+    const groups = Array.from(groupsMap.values());
+    const ordered = [
+      ...groups
+        .filter(g => preferredOrder.includes(g.label.toLowerCase()))
+        .sort(
+          (a, b) =>
+            preferredOrder.indexOf(a.label.toLowerCase()) -
+            preferredOrder.indexOf(b.label.toLowerCase())
+        ),
+      ...groups
+        .filter(g => !preferredOrder.includes(g.label.toLowerCase()))
+        .sort((a, b) => a.label.localeCompare(b.label, 'sv'))
+    ];
+
+    // Render all category sections
+    containerEl.innerHTML = ordered.map(g => renderCategorySection(g.label, g.items)).join('');
+
+    // Clear any existing error message
     const errEl = document.getElementById('menu-error');
     if (errEl) errEl.textContent = '';
   } catch (err) {
-    console.error('[menu] fetch error:', err);
-    listEl.innerHTML =
-      '<li><div class="description">Fel vid hämtning av menyn.</div></li>';
+    console.error('Menu fetch failed:', err);
+    containerEl.innerHTML = `
+      <section class="menu-group">
+        <ul class="menu-group-list">
+          <li><div class="description">Fel vid hämtning av menyn.</div></li>
+        </ul>
+      </section>`;
     const errEl = document.getElementById('menu-error');
     if (errEl) errEl.textContent = 'Fel vid hämtning av menyn';
   }

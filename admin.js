@@ -1,5 +1,7 @@
+// Base API root for admin operations
 const API = 'http://127.0.0.1:3000/api';
 
+// Cache DOM elements used by the admin UI
 const els = {
   loginForm: document.getElementById('login-form'),
   logoutBtn: document.getElementById('logout-btn'),
@@ -10,13 +12,17 @@ const els = {
   status: document.getElementById('auth-status')
 };
 
+// Session-based token storage for authenticated requests
 const tokenStore = {
   get: () => sessionStorage.getItem('token'),
   set: t => sessionStorage.setItem('token', t),
   clear: () => sessionStorage.removeItem('token')
 };
 
+// Update the small auth status indicator
 function setStatus(txt){ els.status.textContent = txt; }
+
+// Show/hide admin-only UI depending on auth state
 function toggleAuthUI() {
   const has = !!tokenStore.get();
   els.crud.style.display = has ? 'block' : 'none';
@@ -24,7 +30,7 @@ function toggleAuthUI() {
   setStatus(has ? 'Inloggad.' : 'Inte inloggad.');
 }
 
-/* HTTP helper */
+// Minimal HTTP helper that supports JSON and FormData with optional auth
 async function http(path, { method='GET', data, auth=false, formData=false } = {}) {
   const headers = {};
   if (!formData) headers['Content-Type'] = 'application/json';
@@ -51,12 +57,14 @@ async function http(path, { method='GET', data, auth=false, formData=false } = {
   return body;
 }
 
-/* Error helpers */
+// Clear field-specific and form-level errors in a form
 function clearErrors(form) {
   form.querySelectorAll('.error').forEach(el => el.textContent = '');
   const fe = form.querySelector('[data-form-error]');
   if (fe) fe.textContent = '';
 }
+
+// Render validation errors into matching placeholders in a form
 function renderErrors(form, payload) {
   if (payload && payload.errors && typeof payload.errors === 'object') {
     Object.entries(payload.errors).forEach(([field, msg]) => {
@@ -70,10 +78,10 @@ function renderErrors(form, payload) {
   }
 }
 
-/* List refresh */
+// Re-fetch and render the admin list of menu items
 async function refresh() {
   try {
-    const items = await http('/menu', { auth: true }); // protected
+    const items = await http('/menu', { auth: true });
     els.list.innerHTML =
       (items || []).map(i => {
         const price = Number.isFinite(Number(i.price)) ? Number(i.price) : i.price;
@@ -82,7 +90,7 @@ async function refresh() {
           <b>${escapeHtml(i.title)}</b> — ${price} kr
           ${i.imageUrl ? `
             <div class="thumb-line">
-              <img class="thumb" src="http://127.0.0.1:3000${i.imageUrl}" alt="${escapeHtml(i.imageAlt || i.title || '')}" />
+              <img class="thumb" src="http://127.0.0.1:3000${i.imageUrl}" alt="${escapeHtml(i.imageAlt || i.title || '')}">
             </div>` : ''
           }
           <span class="right">
@@ -98,6 +106,7 @@ async function refresh() {
   }
 }
 
+// Escape helper to prevent HTML injection in text nodes/attributes
 function escapeHtml(s=''){
   return String(s)
     .replace(/&/g,'&amp;').replace(/</g,'&lt;')
@@ -105,9 +114,7 @@ function escapeHtml(s=''){
     .replace(/'/g,'&#039;');
 }
 
-/* Events */
-
-/* Login */
+// Handle login submission and persist token on success
 els.loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   clearErrors(els.loginForm);
@@ -126,13 +133,13 @@ els.loginForm.addEventListener('submit', async (e) => {
   }
 });
 
-/* Logout */
+// Handle logout by clearing token and collapsing admin UI
 els.logoutBtn.addEventListener('click', () => {
   tokenStore.clear();
   toggleAuthUI();
 });
 
-/* Create item (FormData for image upload) */
+// Create a new menu item using multipart FormData (with optional image)
 els.createForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   clearErrors(els.createForm);
@@ -150,12 +157,12 @@ els.createForm.addEventListener('submit', async (e) => {
   }
 });
 
-/* Inline edit / change image / delete */
+// Delegate list actions: edit price, change image, and delete
 document.getElementById('admin-list').addEventListener('click', async (e) => {
   const btn = e.target.closest('button'); if (!btn) return;
   const li = btn.closest('li'); const id = li?.dataset.id; if (!id) return;
 
-  /* Delete */
+  // Delete an item after confirmation
   if (btn.dataset.act === 'delete') {
     if (!confirm('Ta bort artikeln?')) return;
     try {
@@ -167,7 +174,7 @@ document.getElementById('admin-list').addEventListener('click', async (e) => {
     return;
   }
 
-  /* Edit price */
+  // Edit the price with a numeric prompt
   if (btn.dataset.act === 'edit') {
     const newPrice = Number(prompt('Nytt pris (kr):'));
     if (!Number.isFinite(newPrice)) return;
@@ -180,7 +187,7 @@ document.getElementById('admin-list').addEventListener('click', async (e) => {
     return;
   }
 
-  /* Change image */
+  // Replace the item's image using a file picker
   if (btn.dataset.act === 'image') {
     const input = document.createElement('input');
     input.type = 'file';
@@ -204,6 +211,6 @@ document.getElementById('admin-list').addEventListener('click', async (e) => {
   }
 });
 
-/* Init */
+// Initialize UI state and pre-load list when already authenticated
 toggleAuthUI();
 if (tokenStore.get()) refresh();

@@ -106,7 +106,6 @@ main h1 {
     transform: translateX(-5px) rotate(-5deg);
   }
 }
-
 /* ========== Menu (public) ========== */
 .menu {
   padding: 6rem 2rem;
@@ -114,6 +113,8 @@ main h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
 }
 .menu-container {
   width: 100%;
@@ -128,21 +129,52 @@ main h1 {
   max-width: 900px;
   margin: 0 auto;
 }
-.menu legend h1 {
+.menu h2 {
+  font-size: 6rem;
+  color: #fff;
+  text-align: center;
+}
+.menu h3 {
   font-size: 4rem;
   color: #fff;
   text-align: center;
 }
 
-/* wrapper around #menu-list in your HTML */
+/* wrapper around menu lists */
 .menu-list {
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-/* ensure bulletless, evenly spaced list */
-#menu-list {
+/* ========== Menu group (per kategori) ========== */
+.menu-group {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 3rem auto;
+  padding: 2rem 2.2rem;
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+.menu-group-title {
+  font-size: 3.2rem;
+  color: var(--brand);
+  margin: 0 0 1.4rem 0;
+  text-align: center;
+}
+.menu-group-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1.4rem;
+}
+
+/* ========== Shared list + items (supports #menu-list AND .menu-group-list) ========== */
+#menu-list,
+.menu-group-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -152,21 +184,24 @@ main h1 {
   max-width: 700px;
 }
 
-/* each item as a soft card with image + text grid */
-#menu-list .menu-item {
+#menu-list .menu-item,
+.menu-group-list .menu-item {
   display: grid;
   grid-template-columns: 160px 1fr; /* image | text */
   gap: 1.2rem;
   align-items: start;
   padding: 1.4rem 1.6rem;
-  border: 1px solid var(--gold);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.04);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+ 
+}
+#menu-list .menu-item:hover,
+.menu-group-list .menu-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.32);
 }
 
 /* image styling */
-#menu-list .menu-img {
+#menu-list .menu-img,
+.menu-group-list .menu-img {
   width: 160px;
   height: 160px;
   object-fit: cover;
@@ -176,7 +211,8 @@ main h1 {
 }
 
 /* title + line + price row */
-#menu-list .meta .item {
+#menu-list .meta .item,
+.menu-group-list .meta .item {
   display: grid;
   grid-template-columns: auto 1fr auto; /* name | line | price */
   align-items: baseline;
@@ -184,7 +220,8 @@ main h1 {
 }
 
 /* bigger title */
-#menu-list .meta .name {
+#menu-list .meta .name,
+.menu-group-list .meta .name {
   font-size: 3rem;
   font-weight: 800;
   color: var(--brand);
@@ -192,11 +229,13 @@ main h1 {
 }
 
 /* decorative line */
-#menu-list .meta .menu-line {
+#menu-list .meta .menu-line,
+.menu-group-list .meta .menu-line {
   height: 1px;
   align-self: center;
 }
-#menu-list .meta .menu-line .line {
+#menu-list .meta .menu-line .line,
+.menu-group-list .meta .menu-line .line {
   width: 12rem;
   height: 1px;
   background: var(--gold);
@@ -204,27 +243,32 @@ main h1 {
 }
 
 /* bolder price */
-#menu-list .meta .price {
+#menu-list .meta .price,
+.menu-group-list .meta .price {
   font-size: 3rem;
   font-weight: 800;
   color: #fff;
   white-space: nowrap;
 }
 
-/* description spacing */
-#menu-list .meta .description {
+/* description */
+#menu-list .meta .description,
+.menu-group-list .meta .description {
   margin-top: 0.5rem;
   font-size: 2.4rem;
   line-height: 1.5;
   color: #ddd;
 }
 
-/* subtle hover */
-#menu-list .menu-item:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.32);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+/* category label */
+#menu-list .category,
+.menu-group-list .category {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: 0.2px;
 }
+
 
 /* ========== Location ========== */
 #location {
@@ -268,7 +312,59 @@ main h1 {
   border: 2px solid #000;
   border-radius: 6px;
 }
+/* ========== About (Om oss) ========== */
+.about {
+  padding: 6rem 2rem;
+  background: linear-gradient(#000000ee, #17010094);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.about-container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4rem;
+  flex-wrap: wrap;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--gold);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.about-text {
+  max-width: 600px;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.about-text h2 {
+  font-size: 4rem;
+  color: var(--brand);
+  margin-bottom: 1rem;
+  letter-spacing: 0.3px;
+}
+
+.about-text h3 {
+  font-size: 3rem;
+  color: var(--gold);
+  margin: 1.6rem 0 0.8rem;
+}
+
+.about-text p {
+  font-size: 2.2rem;
+  color: #e8e8e8;
+}
 /* ========== Footer ========== */
 footer {
   background: var(--brand-dark);
@@ -308,7 +404,20 @@ footer {
   html {
     font-size: 58%;
   }
-
+  nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
+   nav ul{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+  }
   .location-container {
     grid-template-columns: 1fr;
   }
@@ -336,27 +445,33 @@ footer {
   .Coffemug-img img {
     width: 10rem;
   }
-
-  .menu fieldset {
-    max-width: 720px;
-    padding: 2.2rem;
+  .menu-group-list{
+    padding: 1rem 0.5rem;
   }
-
-  /* menu list width adjusts automatically via #menu-list max-width */
-  #menu-list .menu-item {
+ #menu-list .menu-item,
+  .menu-group-list .menu-item {
     grid-template-columns: 140px 1fr;
   }
-  #menu-list .menu-img {
+  #menu-list .menu-img,
+  .menu-group-list .menu-img {
     width: 140px;
     height: 140px;
     border-radius: 16px;
   }
-
-  #menu-list .meta .name {
+  #menu-list .meta .name,
+  .menu-group-list .meta .name {
     font-size: 2.4rem;
   }
-  #menu-list .meta .menu-line .line {
+  #menu-list .meta .menu-line .line,
+  .menu-group-list .meta .menu-line .line {
     width: 10rem;
+  }
+   .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-text {
+    max-width: 720px;
   }
 }
 
@@ -368,31 +483,61 @@ footer {
     gap: 1rem;
     flex-wrap: wrap;
   }
-
-  .menu {
+.menu {
     padding: 4rem 1rem;
   }
   .menu fieldset {
     max-width: 100%;
-    padding: 1.6rem;
+    padding: 1.6rem 0.5rem;
   }
-  .menu legend h1 {
+  .menu h2 {
     font-size: 3.2rem;
   }
 
-  /* stack image above text on narrow screens */
-  #menu-list {
+  #menu-list,
+  .menu-group-list {
     max-width: 100%;
   }
-  #menu-list .menu-item {
-    grid-template-columns: 1fr;
+  #menu-list .menu-item,
+  .menu-group-list .menu-item {
+    grid-template-columns: 1fr; /* stack */
   }
-  #menu-list .menu-img {
+  #menu-list .menu-img,
+  .menu-group-list .menu-img {
     width: 100%;
     max-width: 520px;
+
     height: 220px;
   }
-  #menu-list .meta .menu-line .line {
+  #menu-list .meta .menu-line .line,
+  .menu-group-list .meta .menu-line .line {
     width: 8rem;
+  }
+  .footer-container{
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .footer-info{
+    width: 100%;
+    padding: 1rem;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+   .about {
+    padding: 4rem 1.4rem;
+  }
+  .about-text h2 {
+    font-size: 2.8rem;
+  }
+  .about-text h3 {
+    font-size: 2rem;
+  }
+  .about-text p {
+    font-size: 1.7rem;
   }
 }

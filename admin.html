@@ -1,23 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="sv">
+
 <head>
-  <meta charset="utf-8" />
-  <title>Admin – Norra Café</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex" />
-  <link rel="stylesheet" href="./styles.css" />
-  <link rel="stylesheet" href="./admin.css" />
+  <meta charset="utf-8">
+  <title>Admin - Norra Café</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./admin.css">
 </head>
 <body>
   <header>
     <nav>
       <a href="./index.html">
-        <img id="logo" src="./images/Norra Cafe logo1.png" alt="Norra Café" />
+        <img id="logo" src="./images/NorraCafelogo1.png" alt="Norra Café">
       </a>
       <ul>
-        <li><a href="./index.html#menu">Meny</a></li>
-        <li><a href="./index.html#location">Var & När</a></li>
-        <li><a href="./index.html#footer">Kontakt</a></li>
+        <li><a href="./index.html#index">Startsida</a></li>
+       
       </ul>
     </nav>
   </header>
@@ -30,12 +30,12 @@
       <h2>Logga in</h2>
       <form id="login-form" class="row">
         <label class="field">
-          <input name="username" placeholder="Användarnamn" autocomplete="username" required />
+          <input name="username" placeholder="Användarnamn" autocomplete="username">
           <small class="error" data-error-for="username"></small>
         </label>
 
         <label class="field">
-          <input name="password" type="password" placeholder="Lösenord" autocomplete="current-password" required />
+          <input name="password" type="password" placeholder="Lösenord" autocomplete="current-password">
           <small class="error" data-error-for="password"></small>
         </label>
 
@@ -56,27 +56,27 @@
       <h2>Ny menyartikel</h2>
       <form id="create-form" class="row" enctype="multipart/form-data">
         <label class="field">
-          <input type="file" name="image" accept="image/*" required />
+          <input type="file" name="image" accept="image/*" required>
           <small class="error" data-error-for="image"></small>
         </label>
 
         <label class="field">
-          <input name="imageAlt" placeholder="Bildens alt-text" required />
+          <input name="imageAlt" placeholder="Bildens alt-text" required>
           <small class="error" data-error-for="imageAlt"></small>
         </label>
 
         <label class="field">
-          <input name="title" placeholder="Titel" required />
+          <input name="title" placeholder="Titel" required>
           <small class="error" data-error-for="title"></small>
         </label>
 
         <label class="field">
-          <input name="price" type="number" placeholder="Pris (kr)" required />
+          <input name="price" type="number" placeholder="Pris (kr)" required>
           <small class="error" data-error-for="price"></small>
         </label>
 
         <label class="field">
-          <input name="category" placeholder="Kategori (t.ex. Mat, Dryck)" required />
+          <input name="category" placeholder="Kategori (t.ex. Mat, Dryck)" required>
           <small class="error" data-error-for="category"></small>
         </label>
 
@@ -101,11 +101,11 @@
   <footer id="footer">
     <div class="footer-container">
       <div>
-        <img id="footer-logo" src="./images/Norra Cafe logo1.png" alt="Norra Café" />
+        <img id="footer-logo" src="./images/NorraCafelogo1.png" alt="Norra Café">
       </div>
       <div class="footer-info">
         <h3>Norra Café</h3>
-        <p>Stationsgatan 14<br />87230 Kramfors</p>
+        <p>Stationsgatan 14<br>87230 Kramfors</p>
       </div>
     </div>
   </footer>

@@ -1,134 +1,145 @@
 <!DOCTYPE html>
 <html lang="sv">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Norra Café</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Upright&family=Oleo+Script&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Norra Café</title>
 
-    <!-- Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright&family=Oleo+Script&display=swap" rel="stylesheet">
 
-    <!-- Main style -->
-    <link rel="stylesheet" href="./styles.css" />
-    <script src="./main.js"></script>
-  </head>
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <body>
-    <!-- HEADER -->
-    <header>
-      <nav>
-        <a href="./index.html">
-          <img
-            id="logo"
-            src="./images/Norra Cafe logo1.png"
-            alt="Norra Café logo"
-          />
-        </a>
-        <ul>
-          <li><a href="#menu">Meny</a></li>
-          <li><a href="#location">Var & När</a></li>
-          <li><a href="#footer">Kontakt</a></li>
-        </ul>
-      </nav>
-    </header>
+  <!-- Main style -->
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./main.js"></script>
+</head>
 
-    <!-- HERO / MAIN -->
-    <main>
-      <h1>Välkommen till <br />Norra Café</h1>
+<body>
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <a href="./index.html">
+        <img id="logo" src="./images/NorraCafelogo1.png" alt="Norra Café logo">
+      </a>
+      <ul>
+        <li><a href="#menu">Meny</a></li>
+        <li><a href="#location">Var & När</a></li>
+        <li><a href="#about">Om Oss</a></li>
+        <li><a href="#footer">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
 
-      <!-- Animated icons -->
-      <div class="Hotdog-img yummy">
-        <img src="./images/hotdog.png" alt="korv" />
-      </div>
-      <div class="Burger-img yummy">
-        <img src="./images/burgerIcon.png" alt="burgare" />
-      </div>
-      <div class="Coffemug-img yummy">
-        <img src="./images/coffemug.png" alt="kaffe" />
-      </div>
-    </main>
+  <!-- HERO / MAIN -->
+  <main>
+    <h1>Välkommen till <br>Norra Café</h1>
 
-    <!-- MENU SECTION -->
-    <section id="menu" class="menu">
-      <div class="food-container">
-        <fieldset>
-          <legend style="margin-left: 10px; padding: 0 5px">
-            <h1>Meny</h1>
-          </legend>
-          <div class="food-menu-list">
-            <ul id="menu-list"></ul>
-          </div>
-        </fieldset>
-      </div>
-    </section>
-    <!-- LOCATION -->
-    <section id="location">
-      <div class="location-container">
-        <div class="info-image">
-          <img src="./images/ute.jpg" alt="Norra Café utsida" />
+    <!-- Animated icons -->
+    <div class="Hotdog-img yummy">
+      <img src="./images/hotdog.png" alt="korv">
+    </div>
+    <div class="Burger-img yummy">
+      <img src="./images/burgerIcon.png" alt="burgare">
+    </div>
+    <div class="Coffemug-img yummy">
+      <img src="./images/coffemug.png" alt="kaffe">
+    </div>
+  </main>
+
+  <!-- MENU SECTION -->
+  <section id="menu" class="menu">
+    <h2 class="visually-hidden">Vad för Gott?</h2>
+    <div class="food-container">
+      <fieldset>
+        <legend style="margin-left: 10px; padding: 0 5px">
+          <h3 role="heading"  >Meny</h3>
+        </legend>
+        <div class="food-menu-list">
+       <div id="menu-groups"></div>
         </div>
-        <div class="info-card">
-          <div class="info">
-            <h2>Hitta oss</h2>
-            a
-            <p>
-              Stationsgatan 14<br />
-              87230 Kramfors
-            </p>
-            <h3>Öppettider</h3>
-            <p>Mån-Fre: 08:00-18:00</p>
-            <p>Lör-Sön: 10:00-16:00</p>
-          </div>
+      </fieldset>
+    </div>
+  </section>
 
-          <iframe
-            id="map-location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1815.7467925012973!2d17.778703599999996!3d62.9289463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x216e8f38ed0584b9!2sNorra%20Caf%C3%A9%20och%20restaurang%20AB!5e0!3m2!1sen!2sse!4v1673616018676!5m2!1sen!2sse"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
+
+  <!-- LOCATION -->
+  <section id="location">
+    <div class="location-container">
+      <div class="info-image">
+        <img src="./images/ute.jpg" alt="Norra Café utsida">
       </div>
-    </section>
+      <div class="info-card">
+        <div class="info">
+          <h2>Hitta oss</h2>
 
-    <!-- FOOTER -->
-    <footer id="footer">
-      <div class="footer-container">
-        <div>
-          <img
-            id="footer-logo"
-            src="./images/Norra Cafe logo1.png"
-            alt="Norra Café logotyp"
-          />
-        </div>
-        <div class="footer-info">
-          <h3>Norra Café</h3>
           <p>
-            Stationsgatan 14<br />
+            Stationsgatan 14<br>
             87230 Kramfors
           </p>
           <h3>Öppettider</h3>
           <p>Mån-Fre: 08:00-18:00</p>
           <p>Lör-Sön: 10:00-16:00</p>
-          <a
-            href="https://www.facebook.com/profile.php?id=100057049166076"
-            rel="external"
-          >
-            <i class="fa fa-facebook fa-3x"></i>
-          </a>
-          <a href="/admin.html" rel="internal"> Admin </a>
         </div>
+
+        <iframe id="map-location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1815.7467925012973!2d17.778703599999996!3d62.9289463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x216e8f38ed0584b9!2sNorra%20Caf%C3%A9%20och%20restaurang%20AB!5e0!3m2!1sen!2sse!4v1673616018676!5m2!1sen!2sse" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-    </footer>
-  </body>
+    </div>
+  </section>
+
+    <!-- ABOUT SECTION -->
+  <section id="about" class="about">
+    <div class="about-container">
+      <div class="about-image">
+        <img src="./images/ute2.webp" alt="Bild på tågstationen i Kramfors">
+      </div>
+      <div class="about-text">
+        <h2>Om Oss</h2>
+        <p>
+          Norra Café ligger i hjärtat av Kramfors, precis vid den charmiga
+          tågstationen. Här möts doften av nybryggt kaffe, nybakade bullar och
+          gemenskapen från både resenärer och stamgäster. Vi är stolta över att
+          servera lokalt tillagad mat och fika i en varm, hemtrevlig miljö.
+        </p>
+
+        <h3>Varför Norra Café?</h3>
+        <p>
+          För att vi tror på äkta smaker och vänligt bemötande. Hos oss hittar du
+          Kramfors godaste mat, lagad med kärlek och noggrant utvalda råvaror. 
+          Stanna till före tåget, ta en paus mitt i dagen, eller njut av en fika
+          tillsammans med vänner, Norra Café är platsen där varje stund smakar
+          lite bättre.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-container">
+      <div>
+        <img id="footer-logo" src="images/NorraCafelogo1.png" alt="Norra Café logotyp">
+      </div>
+      <div class="footer-info">
+        <h3>Norra Café</h3>
+        <p>
+          Stationsgatan 14<br>
+          87230 Kramfors
+        </p>
+        <h3>Öppettider</h3>
+        <p>Mån-Fre: 08:00-18:00</p>
+        <p>Lör-Sön: 10:00-16:00</p>
+        <a href="https://www.facebook.com/profile.php?id=100057049166076" rel="external">
+          <i class="fa fa-facebook fa-3x"></i>
+        </a>
+        <br><br>
+        <a href="/admin.html" rel="internal"> Admin </a>
+      </div>
+    </div>
+  </footer>
+</body>
+
 </html>
