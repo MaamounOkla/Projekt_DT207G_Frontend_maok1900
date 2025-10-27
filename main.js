@@ -2,7 +2,7 @@
 const API_URL = 'https://projekt-dt207g-backend-maok1900.onrender.com/api/';
 
 // Base URL for uploaded images served by the backend
-const ASSETS_URL = 'https://projekt-dt207g-backend-maok1900.onrender.com/';
+const ASSETS_URL = 'https://projekt-dt207g-backend-maok1900.onrender.com';
 
 // Initialize rendering when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
