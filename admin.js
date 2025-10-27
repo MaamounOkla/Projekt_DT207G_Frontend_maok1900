@@ -38,7 +38,7 @@ async function http(path, { method='GET', data, auth=false, formData=false } = {
     const t = tokenStore.get();
     if (t) headers.Authorization = `Bearer ${t}`;
   }
-  const res = await fetch(`${API}${path}`, {
+  const res = await fetch(`${API_URL}${path}`, {
     method,
     headers,
     body: data ? (formData ? data : JSON.stringify(data)) : undefined

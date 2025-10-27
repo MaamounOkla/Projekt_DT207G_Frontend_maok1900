@@ -1,5 +1,5 @@
 // API endpoint for public menu items
-const API_URL = 'https://projekt-dt207g-backend-maok1900.onrender.com/api/menu';
+const API_URL = 'https://projekt-dt207g-backend-maok1900.onrender.com/api/';
 
 // Base URL for uploaded images served by the backend
 const ASSETS_URL = 'https://projekt-dt207g-backend-maok1900.onrender.com/';
@@ -65,7 +65,7 @@ function renderCategorySection(label, items) {
 // Fetch menu data, group by category, order groups, and render
 async function loadMenu(containerEl) {
   try {
-    const res = await fetch(API_URL);
+    const res = await fetch(API_URL/menu);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     const items = await res.json();
