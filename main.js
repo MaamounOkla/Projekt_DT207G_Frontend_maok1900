@@ -1,5 +1,5 @@
 // API endpoint for public menu items
-const API_URL = 'http://127.0.0.1:3000/api/menu';
+const API_URL = 'https://projekt-dt207g-backend-maok1900.onrender.com';
 
 // Base URL for uploaded images served by the backend
 const ASSETS_URL = 'http://127.0.0.1:3000';
