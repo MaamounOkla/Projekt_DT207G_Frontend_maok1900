@@ -65,7 +65,7 @@ function renderCategorySection(label, items) {
 // Fetch menu data, group by category, order groups, and render
 async function loadMenu(containerEl) {
   try {
-    const res = await fetch(API_URL/menu);
+    const res = await fetch(`${API_URL}/menu`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     const items = await res.json();
