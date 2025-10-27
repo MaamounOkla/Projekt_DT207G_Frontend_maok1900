@@ -13,6 +13,8 @@ Publik webbplats + enkel adminpanel för Norra Café. Frontend är byggd med **H
 ## Senaste uppdatering  
 - 2025-10-24  
  
+## 🌐 Live Demo
+[➡️ Norra Café (Live)](https://norracafe.netlify.app)
 
  
 ## Innehåll
