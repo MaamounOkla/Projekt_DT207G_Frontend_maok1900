@@ -2,10 +2,9 @@
   "name": "projekt_dt207g_frontend_maok1900",
   "version": "1.0.0",
   "description": "",
- 
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build" 
+    "build": "parcel build index.html --public-url ./"
   },
   "keywords": [],
   "author": "",
