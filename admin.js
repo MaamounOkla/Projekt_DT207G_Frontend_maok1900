@@ -1,5 +1,5 @@
 // Base API root for admin operations
-const API = 'http://127.0.0.1:3000/api';
+const API_URL = 'https://projekt-dt207g-backend-maok1900.onrender.com/api';
 
 // Cache DOM elements used by the admin UI
 const els = {
