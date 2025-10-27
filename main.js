@@ -1,8 +1,8 @@
 // API endpoint for public menu items
-const API_URL = 'https://projekt-dt207g-backend-maok1900.onrender.com/api';
+const API_URL = 'https://projekt-dt207g-backend-maok1900.onrender.com/api/menu';
 
 // Base URL for uploaded images served by the backend
-const ASSETS_URL = 'http://127.0.0.1:3000';
+const ASSETS_URL = 'https://projekt-dt207g-backend-maok1900.onrender.com/';
 
 // Initialize rendering when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
