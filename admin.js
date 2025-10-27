@@ -1,6 +1,9 @@
 // Base API root for admin operations
 const API_URL = 'https://projekt-dt207g-backend-maok1900.onrender.com/api';
 
+// Base URL for uploaded images served by the backend
+const ASSETS_URL = 'https://projekt-dt207g-backend-maok1900.onrender.com';
+
 // Cache DOM elements used by the admin UI
 const els = {
   loginForm: document.getElementById('login-form'),
@@ -90,7 +93,7 @@ async function refresh() {
           <b>${escapeHtml(i.title)}</b> — ${price} kr
           ${i.imageUrl ? `
             <div class="thumb-line">
-              <img class="thumb" src="http://127.0.0.1:3000${i.imageUrl}" alt="${escapeHtml(i.imageAlt || i.title || '')}">
+              <img class="thumb" src= ${ASSETS_URL}${i.imageUrl} alt="${escapeHtml(i.imageAlt || i.title || '')}">
             </div>` : ''
           }
           <span class="right">
